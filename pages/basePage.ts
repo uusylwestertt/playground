@@ -188,7 +188,6 @@ export default class BasePage {
     log.debug(`[ACTION] Count all elements with locator: "${selectorKey}"`);
     const elements = await getElement(selectorKey, this, false);
     const elementsCount = await elements.count();
-    
     return elementsCount;
   }
 }
