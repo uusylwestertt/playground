@@ -5,6 +5,7 @@ import { Dashboard } from '../src/pages/dashboard';
 import { HeadTraining } from '../src/pages/headTraining';
 import { log } from '../src/helpers/logger';
 import { config } from '../config';
+import { sleep } from '../src/pages/components';
 import { Page, TestInfo, test } from '@playwright/test';
 
 test.describe('Head', async () => {
@@ -31,10 +32,6 @@ test.describe('Head', async () => {
     }
   });
 });
-
-export async function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export async function screenshotOnFailure({ page }: { page: Page }, testInfo: TestInfo) {
   if (testInfo.status !== testInfo.expectedStatus) {

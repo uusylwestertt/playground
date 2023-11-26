@@ -1,6 +1,6 @@
+import { sleep } from './components';
 import { log } from '../helpers/logger';
 import { getElement } from '../helpers/getElement';
-import { sleep } from '../../tests/heads.spec';
 import { config } from '../../config';
 import { Locator, Page } from '@playwright/test';
 
@@ -80,7 +80,6 @@ export default class BasePage {
     // this.page.locator(selectorKey.toString()).click()
     const element = await getElement(selectorKey, this);
     await element.click();
-
     await sleep(100);
   }
 
