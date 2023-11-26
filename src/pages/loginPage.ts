@@ -15,8 +15,8 @@ export class LoginPage extends BasePage {
 
       async login() {
         await this.click(this.elements.loginLink)
-        await this.typeIn(this.elements.userInput, 'borsuk mistrz')
-        await this.typeIn(this.elements.passwordInput, 'marzec23')
+        await this.typeIn(this.elements.userInput, 'prince vegeta')
+        await this.typeIn(this.elements.passwordInput, 'Mbappe291')
         await this.click(this.elements.loginButton)
       }
 

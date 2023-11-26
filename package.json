@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "lint": "eslint --fix --ext .ts ./src"
   },
   "keywords": [],
   "author": "",

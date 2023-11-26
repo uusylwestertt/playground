@@ -1,8 +1,8 @@
 import { Locator, Page } from "@playwright/test";
-import { config } from "../config";
+import { config } from "../../config";
 import { log } from "../helpers/logger";
 import { getElement } from "../helpers/getElement";
-import { sleep } from "../tests/heads.spec";
+import { sleep } from "../../tests/heads.spec";
 
 export type Elements = {
   [key: string]: string;
@@ -19,16 +19,6 @@ export default class BasePage {
     this.url = config.baseUrl;
   }
 
-  async setLocalStorage(params: { key: string; value: string }) {
-    await this.page.evaluate((params) => {
-      window.localStorage.setItem(params.key, params.value);
-    }, params);
-  }
-
-  async addCookies(name: string, value: string, url: string) {
-    await this.page.context().addCookies([{ name, value, url }]);
-  }
-
   async goToPage(url: string) {
     await this.page.goto(url);
   }
@@ -37,15 +27,31 @@ export default class BasePage {
     return this.page.url();
   }
 
-  public async gameClick(electorKey: string | Locator) {
-  
+  async gameClick(selectorKey: string | Locator) {
     try {
-      await this.click(electorKey);
-    } catch (error) {
-      await this.closeInfoPanels();
-      await this.click(electorKey);
+      await this.click(selectorKey);
+    } catch {
+      await this.checkAllWindows();
+      await this.click(selectorKey);
+      await this.checkAllWindows();
     }
-    // await this.closeInfoPanels();
+  }
+
+  async checkAllWindows() {
+    const windowsList = ["news", "info", "msg"];
+
+    for (let i = 0; i <= 5; i++) {
+      for (let nr = 0; nr < windowsList.length; nr++) {
+        const closeButton = `#${windowsList[nr]} img[src="img/3.jpg"]`;
+        try {
+          const element: Locator = this.page.locator(closeButton);
+          await element.click({ timeout: 35 });
+          log.info(`Closing window: ${closeButton}`);
+        } catch {
+          //nic tu nie ma
+        }
+      }
+    }
   }
 
   public async closeInfoPanels() {
@@ -75,13 +81,7 @@ export default class BasePage {
     const element = await getElement(selectorKey, this);
     await element.click();
 
-    await sleep(500);
-  }
-
-  public async dblClick(selectorKey: string | Locator) {
-    log.debug(`[ACTION] Double clicking on "${selectorKey}"`);
-    const element = await getElement(selectorKey, this);
-    return element.dblclick();
+    await sleep(100);
   }
 
   public async getListOfElements(selectorKey: string) {
@@ -106,18 +106,10 @@ export default class BasePage {
     return this.page.keyboard.insertText(text);
   }
 
-  public async isElementVisibileBoolean(selectorKey: string): Promise<boolean> {
-    log.debug(`Checking if element: "${selectorKey}" is visible`);
-    const element = await getElement(selectorKey, this);
-    const visible = element.isVisible();
-    log.debug(`Visibility of element: "${selectorKey}": ${visible}`);
-    return visible;
-  }
-
   public async isVisibleElement(selectorKey: string): Promise<boolean> {
     log.debug(`Checking if element: "${selectorKey}" is visible`);
-    const element = this.page.locator(selectorKey);
-    const visible = element.isVisible();
+    const element = await getElement(selectorKey, this);
+    const visible = await element.isVisible();
     log.debug(`Visibility of element: "${selectorKey}": ${visible}`);
     return visible;
   }
@@ -127,23 +119,6 @@ export default class BasePage {
     const element = await getElement(selectorKey, this);
     const disabled = element.isDisabled();
     return disabled;
-  }
-  public async clearField(selectorKey: string) {
-    log.debug(`[ACTION] Clearing "${selectorKey}" field`);
-    const element = await getElement(selectorKey, this);
-    return element.fill("");
-  }
-
-  public async check(selectorKey: string | Locator) {
-    log.debug(`[ACTION] Check "${selectorKey}" checkbox`);
-    const element = await getElement(selectorKey, this);
-    return element.first().check({ force: true });
-  }
-
-  public async uncheck(selectorKey: string | Locator) {
-    log.debug(`[ACTION] Uncheck "${selectorKey}" checkbox`);
-    const element = await getElement(selectorKey, this);
-    return element.uncheck();
   }
 
   public async storeText(selectorKey: string | Locator, getTextFrom = "innerText"): Promise<string> {
@@ -176,12 +151,6 @@ export default class BasePage {
     log.debug(`[ACTION] Select "${text}" value from "${selectorKey}" dropdown`);
     const element = await getElement(selectorKey, this);
     return options.isValueAttribute ? await element.selectOption(text) : await element.selectOption({ label: text });
-  }
-
-  public async uploadFiles(selectorKey: string | Locator, path: string | string[]) {
-    log.debug(`[ACTION] Send files to input element "${selectorKey}"`);
-    const element = await getElement(selectorKey, this);
-    await element.setInputFiles(path);
   }
 
   public async countElementsOnPage(selectorKey: string | Locator) {
