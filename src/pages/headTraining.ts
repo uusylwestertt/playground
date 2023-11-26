@@ -1,7 +1,7 @@
-import BasePage from "./basePage";
-import { sleep } from "../../tests/heads.spec";
-import { Page } from "@playwright/test";
-import { log } from "../helpers/logger";
+import BasePage from './basePage';
+import { sleep } from '../../tests/heads.spec';
+import { log } from '../helpers/logger';
+import { Page } from '@playwright/test';
 
 export class HeadTraining extends BasePage {
   constructor(page: Page) {
@@ -20,7 +20,7 @@ export class HeadTraining extends BasePage {
   async getHoolCash(hoolNumber: number) {
     const cashLocator = `#hool${hoolNumber}-inner tr table tr:nth-child(1) td:nth-child(2)`;
     const cashTmp = await this.storeText(cashLocator);
-    const cash = cashTmp.split(" ")[0];
+    const cash = cashTmp.split(' ')[0];
     return Number(cash);
   }
 
@@ -70,8 +70,7 @@ export class HeadTraining extends BasePage {
   }
 
   async clickOnBeerIcon(hoolNumber: number, numberOfPossibleTasks: number, numberOfCurrentTasks: number) {
-    for (let i = numberOfCurrentTasks + 1; i <= 15; i++) {
-      console.log(`Liczba potenc taskow: ` + numberOfPossibleTasks);
+    for (let i = numberOfCurrentTasks + 1; i <= 20; i++) {
       try {
         await this.gameClick(this.beerIconLocator);
       } catch {
@@ -83,7 +82,7 @@ export class HeadTraining extends BasePage {
         break;
       }
 
-      if (i == 15) {
+      if (i == 20) {
         log.info(`Max number of task reached closing beer bar`);
         await this.closeHeadBar(hoolNumber);
       }
@@ -111,7 +110,7 @@ export class HeadTraining extends BasePage {
     const priceLocator = `(//*[@id='bar${hoolNumber}-inner']//td//tbody//tr//td//b)[3]`;
     if (await this.isVisibleElement(priceLocator)) {
       const priceTemp = await this.storeText(priceLocator);
-      const price = priceTemp.split(" ")[0];
+      const price = priceTemp.split(' ')[0];
       return Number(price);
     } else {
       return null;
@@ -143,7 +142,7 @@ export class HeadTraining extends BasePage {
 
     await this.gameClick(workBarLocator);
 
-    await this.page.locator("select").selectOption(numberOfWorkHours.toString());
+    await this.page.locator('select').selectOption(numberOfWorkHours.toString());
     await this.gameClick(toWorkButton);
     await this.gameClick(closeWorkWindow);
     await this.closeHoolAvatar(hoolNumber);

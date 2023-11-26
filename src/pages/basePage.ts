@@ -1,8 +1,8 @@
-import { Locator, Page } from "@playwright/test";
-import { config } from "../../config";
-import { log } from "../helpers/logger";
-import { getElement } from "../helpers/getElement";
-import { sleep } from "../../tests/heads.spec";
+import { log } from '../helpers/logger';
+import { getElement } from '../helpers/getElement';
+import { sleep } from '../../tests/heads.spec';
+import { config } from '../../config';
+import { Locator, Page } from '@playwright/test';
 
 export type Elements = {
   [key: string]: string;
@@ -38,7 +38,7 @@ export default class BasePage {
   }
 
   async checkAllWindows() {
-    const windowsList = ["news", "info", "msg"];
+    const windowsList = ['news', 'info', 'msg'];
 
     for (let i = 0; i <= 5; i++) {
       for (let nr = 0; nr < windowsList.length; nr++) {
@@ -121,21 +121,21 @@ export default class BasePage {
     return disabled;
   }
 
-  public async storeText(selectorKey: string | Locator, getTextFrom = "innerText"): Promise<string> {
+  public async storeText(selectorKey: string | Locator, getTextFrom = 'innerText'): Promise<string> {
     log.debug(`[ACTION] Store text from "${selectorKey}" element`);
     const element = await getElement(selectorKey, this);
 
-    let value = "notSet";
+    let value = 'notSet';
 
-    if (getTextFrom === "innerText") {
+    if (getTextFrom === 'innerText') {
       value = await element.innerText();
     }
 
-    if (getTextFrom === "innerHTML") {
+    if (getTextFrom === 'innerHTML') {
       value = await element.innerHTML();
     }
 
-    if (getTextFrom === "inputValue") {
+    if (getTextFrom === 'inputValue') {
       value = await element.inputValue();
     }
 

@@ -1,5 +1,5 @@
-import BasePage from '../pages/basePage';
 import { log } from './logger';
+import BasePage from '../pages/basePage';
 
 import { Locator } from '@playwright/test';
 
@@ -69,10 +69,10 @@ export async function getElement(selectorKey: string | Locator, pageObject: Base
 }
 
 export const extractSelector = (locator: Locator): string => {
-    const locatorName = 'Locator@';
-    const selector = locator.toString();
-  
-    if (!selector.startsWith(locatorName)) throw Error('Error: Did not find Locator@');
-  
-    return selector.slice(locatorName.length);
-  };
+  const locatorName = 'Locator@';
+  const selector = locator.toString();
+
+  if (!selector.startsWith(locatorName)) throw Error('Error: Did not find Locator@');
+
+  return selector.slice(locatorName.length);
+};
