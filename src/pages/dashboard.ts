@@ -11,7 +11,9 @@ export class Dashboard extends BasePage {
   }
 
   async clickTeamButton() {
-    await this.click(this.elements.closeNewsButton);
+    if (await this.isVisibleElement(this.elements.closeNewsButton)) {
+      await this.click(this.elements.closeNewsButton);
+    }
     await this.gameClick(this.elements.teamLink);
   }
 }

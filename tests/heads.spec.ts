@@ -18,17 +18,19 @@ test.describe('Head', async () => {
     dashboard = new Dashboard(page);
     headTraining = new HeadTraining(page);
     await basePage.goToPage(config.baseUrl);
+    await sleep(2000);
     await loginPage.login();
   });
 
   test.afterEach(screenshotOnFailure);
   test('Case 1: Search tutor by email', async () => {
     await dashboard.clickTeamButton();
-    for (let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= 50; i++) {
       log.info('RUN = ' + i);
       await headTraining.runTraining();
       log.info('Wait 10 min to next run');
       await sleep(600000);
+      await dashboard.clickTeamButton();
     }
   });
 });

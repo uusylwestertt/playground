@@ -31,6 +31,7 @@ export class HeadTraining extends BasePage {
     const priceBeer = await this.getPriceBeear(hoolNumber);
 
     if (priceBeer == null) {
+      log.info(`Closing training for hool: ${hoolNumber} because no free slots`);
       await this.closeHeadBar(hoolNumber);
     } else {
       const numberOfPotentialTasks = await this.countNummberOfAvailableBeerTasks(cashOnHool, priceBeer);
