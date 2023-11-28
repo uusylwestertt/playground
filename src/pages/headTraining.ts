@@ -31,8 +31,15 @@ export class HeadTraining extends BasePage {
     const priceBeer = await this.getPriceBeear(hoolNumber);
 
     if (priceBeer == null) {
-      log.info(`Closing training for hool: ${hoolNumber} because no free slots`);
-      await this.closeHeadBar(hoolNumber);
+      const text = await this.getTextFromBeerBar(hoolNumber);
+
+      if (text == 'The Task List is full') {
+        log.info(`Finish training: ${text} `);
+        await this.closeHeadBar(hoolNumber);
+      } else {
+        log.info(`Closing training for hool: ${hoolNumber} because: ${text} `);
+        await setWork(hoolNumber, 1, this.page);
+      }
     } else {
       const numberOfPotentialTasks = await this.countNummberOfAvailableBeerTasks(cashOnHool, priceBeer);
 
@@ -46,6 +53,12 @@ export class HeadTraining extends BasePage {
         await this.closeHeadBar(hoolNumber);
       }
     }
+  }
+
+  async getTextFromBeerBar(hoolNumber: number) {
+    const textLocator = `#bar${hoolNumber}-inner b`;
+    const text = await this.storeText(textLocator);
+    return text;
   }
 
   async countNummberOfAvailableBeerTasks(money: number, priceBeer: number) {

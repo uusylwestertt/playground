@@ -7,6 +7,7 @@ export class Dashboard extends BasePage {
     this.elements = {
       teamLink: `(//a[contains(text(),'Team')])[1]`,
       closeNewsButton: `#news a[href="#"]`,
+      fightsLink: `(//a[contains(text(),'Fights')])[1]`,
     };
   }
 
@@ -15,5 +16,12 @@ export class Dashboard extends BasePage {
       await this.click(this.elements.closeNewsButton);
     }
     await this.gameClick(this.elements.teamLink);
+  }
+
+  async clickFights() {
+    if (await this.isVisibleElement(this.elements.closeNewsButton)) {
+      await this.click(this.elements.closeNewsButton);
+    }
+    await this.gameClick(this.elements.fightsLink);
   }
 }
