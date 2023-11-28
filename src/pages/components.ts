@@ -1,4 +1,5 @@
 import BasePage from './basePage';
+import { log } from '../helpers/logger';
 import { Page } from '@playwright/test';
 
 export async function sleep(ms: number) {
@@ -49,6 +50,7 @@ export async function closeHoolAvatar(hoolNumber: number, page: Page) {
 }
 
 export async function setWork(hoolNumber: number, numberOfWorkHours: number, page: Page) {
+  log.info(`Send to work for: ${numberOfWorkHours} hours`);
   const basePage = new BasePage(page);
   const workBarLocator = `#hool${hoolNumber}-inner tr table tr:nth-child(2) td:nth-child(3) a`;
   const closeWorkWindow = `#praca${hoolNumber} img[src="img/3.jpg"]`;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
+    "test": "playwright test heads.spec.ts",
     "lint": "eslint --fix --ext .ts ./src ./tests"
   },
   "keywords": [],
