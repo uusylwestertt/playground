@@ -3,7 +3,7 @@ run-name: Fights Vegeta
 
 on:
   schedule:
-     - cron: '*/20 * * * *'
+     - cron: "*/20 1-18 * * *"
   workflow_dispatch:
 
 jobs:
