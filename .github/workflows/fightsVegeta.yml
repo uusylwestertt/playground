@@ -3,9 +3,9 @@ run-name: Fights Vegeta
 
 on:
   schedule:
-     - cron: '*/10 * * * *'
+     - cron: '*/20 * * * *'
   workflow_dispatch:
-  
+
 jobs:
   FightsVegeta:
     runs-on: ubuntu-latest
