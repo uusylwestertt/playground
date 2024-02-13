@@ -1,0 +1,23 @@
+name: Fights Lyysyy
+run-name: Fights Lyysyy
+
+on:
+  schedule:
+     - cron: '*/10 * * * *'
+
+jobs:
+  FightsLyysyy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Install npm"
+        run: |
+          touch .env
+          echo "LOGIN=${{ secrets.LOGIN_LYYSYY }}" >> .env
+          echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
+          npm install
+          npx playwright install
+
+      - name: "Fights lyysyy"
+        run: npm run chromeTest       
