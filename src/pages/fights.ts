@@ -6,7 +6,9 @@ import { Page } from '@playwright/test';
 export class Fights extends BasePage {
   constructor(page: Page) {
     super(page);
-    this.elements = {};
+    this.elements = {
+      clock: `#ustawki-zegar`,
+    };
   }
 
   async wait() {
@@ -19,32 +21,40 @@ export class Fights extends BasePage {
   }
 
   private fightButtonLeftColumn(positionNr: number) {
-    return `#ustawki-inner td[align='center']:nth-child(1) tr:nth-child(${positionNr}) td:nth-child(4)`;
+    return `#ustawki-inner td[align='center']:nth-child(1) tr:nth-child(${positionNr}) td:nth-child(4) `;
   }
 
-  private fightButtonLocatorCenter(postionNumber: number) {
+  private fightButtonCenter(postionNumber: number) {
     return `${this.fightButtonCenterColumn(postionNumber)} a:nth-child(2)`;
   }
 
-  async executeFightsVegeta() {
-    log.info('Executing fights for vegeta');
-    for (let i = 0; i < 8; i++) {
-      log.info('Run number' + i);
-      for (let i = 7; i < 15; i++) {
-        if (await this.isVisibleElement(this.fightButtonLocatorCenter(i))) {
-          log.info(`Klikam w element w kolumnie srodek na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLocatorCenter(i));
-          // await this.wait();
+  private fightButtonLeft(postionNumber: number) {
+    return `${this.fightButtonLeftColumn(postionNumber)} a:nth-child(2)`;
+  }
+
+  async executeFights(startCenter: number, endCenter: number, startLef: number, endLeft: number) {
+    if (await this.isVisibleElement(this.elements.clock)) {
+      log.info('Clock displayed breaking...');
+    } else {
+      for (let i = startCenter; i <= endCenter; i++) {
+        if (await this.isVisibleElement(this.fightButtonCenter(i))) {
+          log.info(`Klikam w element w kolumnie right na pozycji:  ${i}`);
+          await this.gameClick(this.fightButtonCenter(i));
+          break;
         } else {
-          log.info(`Position not avilable`);
+          log.info(`Position ${i} not avilable`);
         }
       }
+    }
 
-      for (let i = 6; i < 10; i++) {
-        if (this.isVisibleElement(this.fightButtonLeftColumn(i))) {
+    if (await this.isVisibleElement(this.elements.clock)) {
+      log.info('Clock displayed breaking...');
+    } else {
+      for (let i = startLef; i <= endLeft; i++) {
+        if (await this.isVisibleElement(this.fightButtonLeft(i))) {
           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLeftColumn(i));
-          // await this.wait();
+          await this.gameClick(this.fightButtonLeft(i));
+          break;
         } else {
           log.info(`Position not avilable ${this.fightButtonLeftColumn(i)}`);
         }
@@ -52,55 +62,71 @@ export class Fights extends BasePage {
     }
   }
 
-  async executeFightsLyysyy() {
-    log.info('Executing fights for lyysyy');
-    for (let i = 0; i < 8; i++) {
-      log.info('Run number' + i);
-      for (let i = 5; i < 14; i++) {
-        if (await this.isVisibleElement(this.fightButtonLocatorCenter(i))) {
-          log.info(`Klikam w element w kolumnie srodek na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLocatorCenter(i));
-          // await this.wait();
-        } else {
-          log.info(`Position not avilable ${this.fightButtonLocatorCenter(i)}`);
-        }
-      }
+  // async executeFightsLyysyy() {
+  //   log.info('Executing fights for lyysyy');
+  //   for (let i = 0; i < 8; i++) {
+  //     log.info('Run number' + i);
+  //     for (let i = 5; i < 14; i++) {
+  //       if (await this.isVisibleElement(this.fightButtonCenter(i))) {
+  //         if (this.isVisibleElement(this.elements.clock)) {
+  //           break;
+  //         } else {
+  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
+  //           await this.gameClick(this.fightButtonCenter(i));
+  //           await this.wait();
+  //         }
+  //       } else {
+  //         log.info(`Position not avilable ${this.fightButtonCenter(i)}`);
+  //       }
+  //     }
 
-      for (let i = 5; i < 9; i++) {
-        if (this.isVisibleElement(this.fightButtonLeftColumn(i))) {
-          log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLeftColumn(i));
-          // await this.wait();
-        } else {
-          log.info(`Position not avilable ${this.fightButtonLocatorCenter(i)}`);
-        }
-      }
-    }
-  }
+  //     for (let i = 5; i < 9; i++) {
+  //       if (this.isVisibleElement(this.fightButtonLeft(i))) {
+  //         if (this.isVisibleElement(this.elements.clock)) {
+  //           break;
+  //         } else {
+  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
+  //           await this.gameClick(this.fightButtonLeft(i));
+  //           await this.wait();
+  //         }
+  //       } else {
+  //         log.info(`Position not avilable ${this.fightButtonLeft(i)}`);
+  //       }
+  //     }
+  //   }
+  // }
 
-  async executeFightsBorsuk() {
-    log.info('Executing fights for borsuk');
-    for (let i = 0; i < 8; i++) {
-      log.info('Run number' + i);
-      for (let i = 3; i < 12; i++) {
-        if (await this.isVisibleElement(this.fightButtonLocatorCenter(i))) {
-          log.info(`Klikam w element w kolumnie srodek na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLocatorCenter(i));
-          // await this.wait();
-        } else {
-          log.info(`Position not avilable ${this.fightButtonLocatorCenter(i)}`);
-        }
-      }
+  // async executeFightsBorsuk() {
+  //   log.info('Executing fights for borsuk');
+  //   for (let i = 0; i < 8; i++) {
+  //     log.info('Run number' + i);
+  //     for (let i = 3; i < 12; i++) {
+  //       if (await this.isVisibleElement(this.fightButtonCenter(i))) {
+  //         if (this.isVisibleElement(this.elements.clock)) {
+  //           break;
+  //         } else {
+  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
+  //           await this.gameClick(this.fightButtonCenter(i));
+  //           await this.wait();
+  //         }
+  //       } else {
+  //         log.info(`Position not avilable ${this.fightButtonCenter(i)}`);
+  //       }
+  //     }
 
-      for (let i = 4; i < 7; i++) {
-        if (this.isVisibleElement(this.fightButtonLeftColumn(i))) {
-          log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLeftColumn(i));
-          // await this.wait();
-        } else {
-          log.info(`Position not avilable ${this.fightButtonLeftColumn(i)}`);
-        }
-      }
-    }
-  }
+  //     for (let i = 4; i < 7; i++) {
+  //       if (this.isVisibleElement(this.fightButtonLeft(i))) {
+  //         if (this.isVisibleElement(this.elements.clock)) {
+  //           break;
+  //         } else {
+  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
+  //           await this.gameClick(this.fightButtonLeft(i));
+  //           await this.wait();
+  //         }
+  //       } else {
+  //         log.info(`Position not avilable ${this.fightButtonLeft(i)}`);
+  //       }
+  //     }
+  //   }
+  // }
 }

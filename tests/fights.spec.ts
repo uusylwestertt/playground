@@ -7,12 +7,13 @@ import { Dashboard } from '../src/pages/dashboard';
 import { Fights } from '../src/pages/fights';
 import { Users } from '../src/enums/users';
 import { test } from '@playwright/test';
+import { log } from '../src/helpers/logger';
 
 let loginPage: LoginPage;
 let dashboardPage: Dashboard;
 let fightsPage: Fights;
 
-test.describe('Head', async () => {
+test.describe('Fights', async () => {
   test.beforeEach(async ({ page }) => {
     const basePage = new BasePage(page);
     loginPage = new LoginPage(page);
@@ -29,11 +30,14 @@ test.describe('Head', async () => {
     const login = config.login;
 
     if (login == Users.borsuk) {
-      await fightsPage.executeFightsBorsuk();
+      log.info('Borsuk');
+      await fightsPage.executeFights(3, 12, 4, 7);
     } else if (login == Users.lysy) {
-      await fightsPage.executeFightsLyysyy();
+      log.info('Lysy');
+      await fightsPage.executeFights(5, 14, 5, 9);
     } else {
-      await fightsPage.executeFightsVegeta();
+      log.info('Vegeta');
+      await fightsPage.executeFights(5, 17, 6, 10);
     }
   });
 });
