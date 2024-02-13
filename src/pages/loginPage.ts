@@ -15,12 +15,13 @@ export class LoginPage extends BasePage {
   }
 
   async login() {
-    const login = config.user;
-    const password = login == Users.lysy ? config.passwordLyysyy : config.passwordBorsuk;
+    const login = config.login;
+    const password = login == Users.borsuk ? config.passwordBorsuk : config.passwordLyysyyVegeta;
     await this.click(this.elements.loginLink);
     await this.typeIn(this.elements.userInput, login);
     await this.typeIn(this.elements.passwordInput, password);
     await this.click(this.elements.loginButton);
+    await this.sleep(2000);
   }
 
   async sleep(ms: number) {

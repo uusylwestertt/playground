@@ -89,7 +89,7 @@ export default class BasePage {
   }
 
   public async typeIn(selectorKey: string | Locator, text: string) {
-    log.debug(`[ACTION] Typing into "${selectorKey}" - '"${text}"'`);
+    log.info(`[ACTION] Typing into "${selectorKey}" - '"${text}"'`);
     const element = await getElement(selectorKey, this);
     return element.type(text);
   }
