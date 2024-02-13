@@ -4,6 +4,7 @@ run-name: Fights Borsuk
 on:
   schedule:
      - cron: '*/10 * * * *'
+  workflow_dispatch:
 
 jobs:
   FightsBorsuk:
