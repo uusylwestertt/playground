@@ -18,5 +18,5 @@ jobs:
           touch .env
           echo "LOGIN=${{ secrets.LOGIN_LYYSYY }}" >> .env
           echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
-          npx playwright install
+          npx playwright install firefox
           npm run chromeTest       
