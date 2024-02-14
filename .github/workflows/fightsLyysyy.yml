@@ -13,13 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Install npm"
+      - name: "Fights lyysyy"
         run: |
           touch .env
           echo "LOGIN=${{ secrets.LOGIN_LYYSYY }}" >> .env
           echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
-          npm install
           npx playwright install
-
-      - name: "Fights lyysyy"
-        run: npm run chromeTest       
+          npm run chromeTest       

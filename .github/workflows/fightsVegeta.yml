@@ -12,14 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Install npm"
+      - name: "Fights vegeta"
         run: |
           touch .env
           echo "LOGIN=${{ secrets.LOGIN_VEGETA }}" >> .env
           echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
-          npm install
           npx playwright install
-
-      - name: "Fights vegeta"
-        run: npm run safariTest
+          npm run safariTest
     
