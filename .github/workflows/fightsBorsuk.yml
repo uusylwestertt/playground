@@ -27,5 +27,7 @@ jobs:
           touch .env
           echo "LOGIN=${{ secrets.LOGIN_BORSUK }}" >> .env
           echo "PASSWORD_BORSUK=${{ secrets.PASSWORD_BORSUK }}" >> .env
+          npm install
+          npx playwright install
           npm run firefoxTest
     
