@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "firefoxTest": "npx playwright test --project=firefox fights.spec.ts",
-    "chromeTest": "npx playwright test --project=chromium fights.spec.ts",
-    "safariTest": "npx playwright test --project=chromium fights.spec.ts",
+    "firefoxTest": "npx playwright test fights.spec.ts",
+    "chromeTest": "npx playwright test fights.spec.ts",
+    "safariTest": "npx playwright test fights.spec.ts",
     "lint": "eslint --fix --ext .ts ./src ./tests"
   },
   "keywords": [],
