@@ -3,7 +3,7 @@ run-name: Fights Borsuk
 
 on:
   schedule:
-     - cron: "*/20 1-18 * * *"
+     - cron: "*/20 1-22 * * *"
   workflow_dispatch:
 
 jobs:
