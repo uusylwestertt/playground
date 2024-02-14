@@ -23,5 +23,9 @@ jobs:
       #     npx playwright install
 
       - name: "Fights borsuk"
-        run: npm run firefoxTest
+        run: |
+          touch .env
+          echo "LOGIN=${{ secrets.LOGIN_BORSUK }}" >> .env
+          echo "PASSWORD_BORSUK=${{ secrets.PASSWORD_BORSUK }}" >> .env
+          npm run firefoxTest
     
