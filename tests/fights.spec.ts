@@ -38,14 +38,14 @@ test.describe('Fights', async () => {
     log.info('Fights for lysy');
     await loginPage.login(loginLyysyy);
     await dashboardPage.clickFights();
-    await fightsPage.executeFights(3, 12, 4, 7);
+    await fightsPage.executeFights(5, 13, 4, 9);
     await dashboardPage.logout();
 
     //fights vegeta
     log.info('Fights for PrinsVezeta');
     await loginPage.login(loginVegeta);
     await dashboardPage.clickFights();
-    await fightsPage.executeFights(3, 12, 4, 7);
+    await fightsPage.executeFights(7,15, 6,10);
     await dashboardPage.logout();
   });
 });
