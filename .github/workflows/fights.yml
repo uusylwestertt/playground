@@ -14,9 +14,9 @@ jobs:
       - name: "Fights"
         run: |
           touch .env
-          echo "LOGIN=${{ secrets.LOGIN_BORSUK }}" >> .env
-          echo "LOGIN=${{ secrets.LOGIN_VEGETA }}" >> .env
-          echo "LOGIN=${{ secrets.LOGIN_LYYSYY }}" >> .env
+          echo "LOGIN_BORSUK=${{ secrets.LOGIN_BORSUK }}" >> .env
+          echo "LOGIN_LYYSYY=${{ secrets.LOGIN_VEGETA }}" >> .env
+          echo "LOGIN_VEGETA=${{ secrets.LOGIN_LYYSYY }}" >> .env
           echo "PASSWORD_BORSUK=${{ secrets.PASSWORD_BORSUK }}" >> .env
           echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
           cat .env
