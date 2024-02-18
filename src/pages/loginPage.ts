@@ -14,8 +14,7 @@ export class LoginPage extends BasePage {
     };
   }
 
-  async login() {
-    const login = config.login;
+  async login(login: string) {
     const password = login == Users.borsuk ? config.passwordBorsuk : config.passwordLyysyyVegeta;
     await this.click(this.elements.loginLink);
     await this.typeIn(this.elements.userInput, login);

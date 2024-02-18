@@ -8,6 +8,8 @@ export class Dashboard extends BasePage {
       teamLink: `(//a[contains(text(),'Team')])[1]`,
       closeNewsButton: `#news a[href="#"]`,
       fightsLink: `(//a[contains(text(),'Fights')])[1]`,
+      closeFightsWindow: `#ustawki img[src="img/3.jpg"]`,
+      logoutButton: `a[href="?menu=logout"]`,
     };
   }
 
@@ -23,5 +25,10 @@ export class Dashboard extends BasePage {
       await this.click(this.elements.closeNewsButton);
     }
     await this.gameClick(this.elements.fightsLink);
+  }
+
+  async logout() {
+    await this.click(this.elements.closeFightsWindow);
+    await this.gameClick(this.elements.logoutButton);
   }
 }

@@ -5,9 +5,8 @@ import { config } from '../config';
 import { sleep } from '../src/pages/components';
 import { Dashboard } from '../src/pages/dashboard';
 import { Fights } from '../src/pages/fights';
-import { Users } from '../src/enums/users';
-import { test } from '@playwright/test';
 import { log } from '../src/helpers/logger';
+import { test } from '@playwright/test';
 
 let loginPage: LoginPage;
 let dashboardPage: Dashboard;
@@ -24,20 +23,29 @@ test.describe('Fights', async () => {
   });
 
   test('Case 1: Start fights', async () => {
-    await loginPage.login();
-    await dashboardPage.clickFights();
-    await sleep(2000);
-    const login = config.login;
+    const loginBorsuk = config.loginBorsuk;
+    const loginLyysyy = config.loginLyysyy;
+    const loginVegeta = config.loginVegeta;
 
-    if (login == Users.borsuk) {
-      log.info('Borsuk');
-      await fightsPage.executeFights(3, 12, 4, 7);
-    } else if (login == Users.lysy) {
-      log.info('Lysy');
-      await fightsPage.executeFights(5, 14, 5, 9);
-    } else {
-      log.info('Vegeta');
-      await fightsPage.executeFights(5, 17, 6, 10);
-    }
+    //fights borusk
+    log.info('Borsuk');
+    await loginPage.login(loginBorsuk);
+    await dashboardPage.clickFights();
+    await fightsPage.executeFights(3, 12, 4, 7);
+    await dashboardPage.logout();
+
+    //fights lyysyy
+    log.info('lyysyy');
+    await loginPage.login(loginLyysyy);
+    await dashboardPage.clickFights();
+    await fightsPage.executeFights(3, 12, 4, 7);
+    await dashboardPage.logout();
+
+    //fights vegeta
+    log.info('vegeta');
+    await loginPage.login(loginVegeta);
+    await dashboardPage.clickFights();
+    await fightsPage.executeFights(3, 12, 4, 7);
+    await dashboardPage.logout();
   });
 });

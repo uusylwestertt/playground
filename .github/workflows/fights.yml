@@ -1,0 +1,24 @@
+name: Fights Borsuk
+run-name: Fights Borsuk
+
+on:
+  schedule:
+     - cron: "*/20 1-23 * * *"
+  workflow_dispatch:
+
+jobs:
+  FightsBorsuk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Fights"
+        run: |
+          touch .env
+          echo "LOGIN=${{ secrets.LOGIN_BORSUK }}" >> .env
+          echo "LOGIN=${{ secrets.LOGIN_VEGETA }}" >> .env
+          echo "LOGIN=${{ secrets.LOGIN_LYYSYY }}" >> .env
+          echo "PASSWORD_BORSUK=${{ secrets.PASSWORD_BORSUK }}" >> .env
+          echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
+          npx playwright install firefox
+          npm run firefoxTest
+    
