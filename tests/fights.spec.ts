@@ -28,21 +28,21 @@ test.describe('Fights', async () => {
     const loginVegeta = config.loginVegeta;
 
     //fights borusk
-    log.info('Borsuk');
+    log.info('Fights for stevenBorsuk');
     await loginPage.login(loginBorsuk);
     await dashboardPage.clickFights();
     await fightsPage.executeFights(3, 12, 4, 7);
     await dashboardPage.logout();
 
     //fights lyysyy
-    log.info('lyysyy');
+    log.info('Fights for lysy');
     await loginPage.login(loginLyysyy);
     await dashboardPage.clickFights();
     await fightsPage.executeFights(3, 12, 4, 7);
     await dashboardPage.logout();
 
     //fights vegeta
-    log.info('vegeta');
+    log.info('Fights for PrinsVezeta');
     await loginPage.login(loginVegeta);
     await dashboardPage.clickFights();
     await fightsPage.executeFights(3, 12, 4, 7);
