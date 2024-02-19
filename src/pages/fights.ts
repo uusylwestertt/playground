@@ -38,6 +38,7 @@ export class Fights extends BasePage {
       log.info('Clock displayed breaking...');
     } else {
       for (let i = startCenter; i <= endCenter; i++) {
+        log.info(`Sprawdzam element:  ${this.fightButtonCenter(i)}`);
         if (await this.isVisibleElement(this.fightButtonCenter(i))) {
           log.info(`Klikam w element w kolumnie center na pozycji:  ${i}`);
           await this.gameClick(this.fightButtonCenter(i));
@@ -52,6 +53,7 @@ export class Fights extends BasePage {
       log.info('Clock displayed breaking...');
     } else {
       for (let i = startLef; i <= endLeft; i++) {
+        log.info(`Sprawdzam element:  ${this.fightButtonLeft(i)}`);
         if (await this.isVisibleElement(this.fightButtonLeft(i))) {
           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
           await this.gameClick(this.fightButtonLeft(i));
