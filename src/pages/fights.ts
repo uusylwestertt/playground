@@ -33,6 +33,7 @@ export class Fights extends BasePage {
   }
 
   async executeFights(startCenter: number, endCenter: number, startLef: number, endLeft: number) {
+    await sleep(500);
     if (await this.isVisibleElement(this.elements.clock)) {
       log.info('Clock displayed breaking...');
     } else {
