@@ -45,7 +45,7 @@ test.describe('Fights', async () => {
     log.info('Fights for PrinsVezeta');
     await loginPage.login(loginVegeta);
     await dashboardPage.clickFights();
-    await fightsPage.executeFights(7, 15, 6, 10);
+    await fightsPage.executeFights(8, 15, 8, 10);
     await dashboardPage.logout();
   });
 });
