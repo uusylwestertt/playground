@@ -25,11 +25,13 @@ export class Fights extends BasePage {
   }
 
   private fightButtonCenter(postionNumber: number) {
-    return `${this.fightButtonCenterColumn(postionNumber)} a:nth-child(2)`;
+    return `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[${postionNumber}]/td[4]/a[2]/img`;
+    // return `${this.fightButtonCenterColumn(postionNumber)} a:nth-child(2)`;
   }
 
   private fightButtonLeft(postionNumber: number) {
-    return `${this.fightButtonLeftColumn(postionNumber)} a:nth-child(2)`;
+    return `//*[@id="ustawki-inner"]/table/tbody/tr/td[1]/table/tbody/tr[${postionNumber}]/td[4]/a[2]/img`;
+    // return `${this.fightButtonLeftColumn(postionNumber)} a:nth-child(2)`;
   }
 
   async executeFights(startCenter: number, endCenter: number, startLef: number, endLeft: number) {
