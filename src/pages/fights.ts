@@ -42,6 +42,7 @@ export class Fights extends BasePage {
         if (await this.isVisibleElement(this.fightButtonCenter(i))) {
           log.info(`Klikam w element w kolumnie center na pozycji:  ${i}`);
           await this.gameClick(this.fightButtonCenter(i));
+          await sleep(200);
           break;
         } else {
           log.info(`Position ${i} not avilable`);
