@@ -43,6 +43,7 @@ export class Fights extends BasePage {
         log.info(`Sprawdzam element:  ${this.fightButtonCenter(i)}`);
         if (await this.isVisibleElement(this.fightButtonCenter(i))) {
           log.info(`Klikam w element w kolumnie center na pozycji:  ${i}`);
+          log.info(`${this.fightButtonCenter(i)}`);
           await this.gameClick(this.fightButtonCenter(i));
           await sleep(200);
           break;
