@@ -23,27 +23,27 @@ test.describe('Fights', async () => {
   });
 
   test('Case 1: Start fights', async () => {
-    // const loginBorsuk = config.loginBorsuk;
-    // const loginLyysyy = config.loginLyysyy;
+    const loginBorsuk = config.loginBorsuk;
+    const loginLyysyy = config.loginLyysyy;
     const loginVegeta = config.loginVegeta;
 
-    // //fights borusk
-    // log.info('Fights for stevenBorsuk');
-    // await loginPage.login(loginBorsuk);
-    // await dashboardPage.clickFights();
-    // await fightsPage.executeFights(3, 12, 4, 7);
-    // await dashboardPage.logout();
+    //fights borusk
+    log.info('Fights for stevenBorsuk');
+    await loginPage.login(loginBorsuk);
+    await dashboardPage.clickFights();
+    await fightsPage.executeFights(3, 12, 4, 7);
+    await dashboardPage.logout();
 
-    // //fights lyysyy
-    // log.info('Fights for lysy');
-    // await loginPage.login(loginLyysyy);
-    // await dashboardPage.clickFights();
-    // await fightsPage.executeFights(5, 13, 4, 9);
-    // await dashboardPage.logout();
+    //fights lyysyy
+    log.info('Fights for lysy');
+    await loginPage.login(loginLyysyy);
+    await dashboardPage.clickFights();
+    await fightsPage.executeFights(5, 13, 4, 9);
+    await dashboardPage.logout();
 
     //fights vegeta
     log.info('Fights for PrinsVezeta');
-    await loginPage.login('prince vegeta');
+    await loginPage.login(loginVegeta);
     await dashboardPage.clickFights();
     await fightsPage.executeFights(7, 15, 6, 10);
     await dashboardPage.logout();
