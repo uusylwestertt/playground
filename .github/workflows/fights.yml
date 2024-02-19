@@ -21,5 +21,5 @@ jobs:
           echo "PASSWORD=${{ secrets.PASSWORD_LYYSYY_VEGETA }}" >> .env
           cat .env
           npx playwright install firefox
-          npm run firefoxTest
+          npm run chromium
     
