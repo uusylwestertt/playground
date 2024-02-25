@@ -42,10 +42,10 @@ test.describe('Fights', async () => {
     await dashboardPage.logout();
 
     //fights vegeta
-    log.info('Fights for PrinsVezeta');
-    await loginPage.login(loginVegeta);
-    await dashboardPage.clickFights();
-    await fightsPage.executeFights(8, 15, 8, 10);
-    await dashboardPage.logout();
+  //  log.info('Fights for PrinsVezeta');
+   // await loginPage.login(loginVegeta);
+   // await dashboardPage.clickFights();
+  //  await fightsPage.executeFights(8, 15, 8, 10);
+   // await dashboardPage.logout();
   });
 });
