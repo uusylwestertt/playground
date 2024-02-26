@@ -31,21 +31,21 @@ test.describe('Fights', async () => {
     log.info('Fights for stevenBorsuk');
     await loginPage.login(loginBorsuk);
     await dashboardPage.clickFights();
-    await fightsPage.executeFights(3, 12, 4, 7);
+    await fightsPage.executeFights(3, 12);
     await dashboardPage.logout();
 
     //fights lyysyy
     log.info('Fights for lysy');
     await loginPage.login(loginLyysyy);
     await dashboardPage.clickFights();
-    await fightsPage.executeFights(5, 13, 4, 9);
+    await fightsPage.executeFights(5, 13);
     await dashboardPage.logout();
 
-    //fights vegeta
-  //  log.info('Fights for PrinsVezeta');
-   // await loginPage.login(loginVegeta);
-   // await dashboardPage.clickFights();
-  //  await fightsPage.executeFights(8, 15, 8, 10);
-   // await dashboardPage.logout();
+    // fights vegeta
+    log.info('Fights for PrinsVezeta');
+    await loginPage.login(loginVegeta);
+    await dashboardPage.clickFights();
+    await fightsPage.fightVegeta();
+    await dashboardPage.logout();
   });
 });

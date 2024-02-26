@@ -34,7 +34,7 @@ export class Fights extends BasePage {
     // return `${this.fightButtonLeftColumn(postionNumber)} a:nth-child(2)`;
   }
 
-  async executeFights(startCenter: number, endCenter: number, startLef: number, endLeft: number) {
+  async executeFights(startCenter: number, endCenter: number) {
     await sleep(500);
     if (await this.isVisibleElement(this.elements.clock)) {
       log.info('Clock displayed breaking...');
@@ -52,88 +52,25 @@ export class Fights extends BasePage {
         }
       }
     }
-
-    if (await this.isVisibleElement(this.elements.clock)) {
-      log.info('Clock displayed breaking...');
-    } else {
-      for (let i = startLef; i <= endLeft; i++) {
-        log.info(`Sprawdzam element:  ${this.fightButtonLeft(i)}`);
-        if (await this.isVisibleElement(this.fightButtonLeft(i))) {
-          log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-          await this.gameClick(this.fightButtonLeft(i));
-          break;
-        } else {
-          log.info(`Position not avilable ${this.fightButtonLeftColumn(i)}`);
-        }
-      }
-    }
   }
 
-  // async executeFightsLyysyy() {
-  //   log.info('Executing fights for lyysyy');
-  //   for (let i = 0; i < 8; i++) {
-  //     log.info('Run number' + i);
-  //     for (let i = 5; i < 14; i++) {
-  //       if (await this.isVisibleElement(this.fightButtonCenter(i))) {
-  //         if (this.isVisibleElement(this.elements.clock)) {
-  //           break;
-  //         } else {
-  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-  //           await this.gameClick(this.fightButtonCenter(i));
-  //           await this.wait();
-  //         }
-  //       } else {
-  //         log.info(`Position not avilable ${this.fightButtonCenter(i)}`);
-  //       }
-  //     }
+  pozycja6 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[7]/td[4]/a/img`;
+  pozycja7 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[8]/td[4]/a/img`;
+  pozycja8 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[9]/td[4]/a/img`;
+  pozycja9 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[10]/td[4]/a/img`;
 
-  //     for (let i = 5; i < 9; i++) {
-  //       if (this.isVisibleElement(this.fightButtonLeft(i))) {
-  //         if (this.isVisibleElement(this.elements.clock)) {
-  //           break;
-  //         } else {
-  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-  //           await this.gameClick(this.fightButtonLeft(i));
-  //           await this.wait();
-  //         }
-  //       } else {
-  //         log.info(`Position not avilable ${this.fightButtonLeft(i)}`);
-  //       }
-  //     }
-  //   }
-  // }
-
-  // async executeFightsBorsuk() {
-  //   log.info('Executing fights for borsuk');
-  //   for (let i = 0; i < 8; i++) {
-  //     log.info('Run number' + i);
-  //     for (let i = 3; i < 12; i++) {
-  //       if (await this.isVisibleElement(this.fightButtonCenter(i))) {
-  //         if (this.isVisibleElement(this.elements.clock)) {
-  //           break;
-  //         } else {
-  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-  //           await this.gameClick(this.fightButtonCenter(i));
-  //           await this.wait();
-  //         }
-  //       } else {
-  //         log.info(`Position not avilable ${this.fightButtonCenter(i)}`);
-  //       }
-  //     }
-
-  //     for (let i = 4; i < 7; i++) {
-  //       if (this.isVisibleElement(this.fightButtonLeft(i))) {
-  //         if (this.isVisibleElement(this.elements.clock)) {
-  //           break;
-  //         } else {
-  //           log.info(`Klikam w element w kolumnie left na pozycji:  ${i}`);
-  //           await this.gameClick(this.fightButtonLeft(i));
-  //           await this.wait();
-  //         }
-  //       } else {
-  //         log.info(`Position not avilable ${this.fightButtonLeft(i)}`);
-  //       }
-  //     }
-  //   }
-  // }
+  async fightVegeta() {
+    await sleep(500);
+    if (await this.isVisibleElement(this.elements.clock)) {
+      log.info('Clock displayed breaking...');
+    } else if (await this.page.locator(this.pozycja6).isVisible()) {
+      await this.page.locator(this.pozycja6).click();
+    } else if (await this.page.locator(this.pozycja7).isVisible()) {
+      await this.page.locator(this.pozycja7).click();
+    } else if (await this.page.locator(this.pozycja8).isVisible()) {
+      await this.page.locator(this.pozycja8).click();
+    } else if (await this.page.locator(this.pozycja9).isVisible()) {
+      await this.page.locator(this.pozycja9).click();
+    }
+  }
 }
