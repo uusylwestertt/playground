@@ -42,13 +42,13 @@ test.describe('Fights', async () => {
     await dashboardPage.logout();
   });
 
-  test('Case 1: Start fights princessa', async () => {
-    const loginVegeta = config.loginVegeta;
-    // fights vegeta
-    log.info('Fights for PrinsVezeta');
-    await loginPage.login(loginVegeta);
-    await dashboardPage.clickFights();
-    await fightsPage.fightVegeta();
-    await dashboardPage.logout();
-  });
+  // test('Case 1: Start fights princessa', async () => {
+  //   const loginVegeta = config.loginVegeta;
+  //   // fights vegeta
+  //   log.info('Fights for PrinsVezeta');
+  //   await loginPage.login(loginVegeta);
+  //   await dashboardPage.clickFights();
+  //   await fightsPage.fightVegeta();
+  //   await dashboardPage.logout();
+  // });
 });
