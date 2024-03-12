@@ -54,10 +54,10 @@ export class Fights extends BasePage {
     }
   }
 
-  pozycja7 = `/html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[8]/td[4]/a[2]/img`;
-  pozycja8 = `/html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[9]/td[4]/a[2]/img`;
-  pozycja9 = `/html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[10]/td[4]/a[2]/img`;
-  pozycja10 = `/html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[11]/td[4]/a[2]/img`;
+  pozycja7 = `html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[8]/td[4]/a[2]/img`;
+  pozycja8 = `html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[9]/td[4]/a[2]/img`;
+  pozycja9 = `html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[10]/td[4]/a[2]/img`;
+  pozycja10 = `html/body/div[2]/table/tbody/tr[2]/td[2]/table/tbody/tr/td[2]/table/tbody/tr[11]/td[4]/a[2]/img`;
 
   async fightVegeta() {
     await sleep(500);
