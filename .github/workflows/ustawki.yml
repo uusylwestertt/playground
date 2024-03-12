@@ -1,5 +1,5 @@
-name: Fights
-run-name: Fights
+name: Ustawki
+run-name: Ustawki
 
 on:
   schedule:
