@@ -54,10 +54,10 @@ export class Fights extends BasePage {
     }
   }
 
-  pozycja7 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[8]/td[4]/a[2]/img`;
-  pozycja8 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[9]/td[4]/a[2]/img`;
-  pozycja9 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[10]/td[4]/a[2]/img`;
-  pozycja10 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[11]/td[4]/a[2]/img`;
+  pozycja7 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[8]/td[4]/a[2]`;
+  pozycja8 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[9]/td[4]/a[2]`;
+  pozycja9 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[10]/td[4]/a[2]`;
+  pozycja10 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[11]/td[4]/a[2]`;
 
   async fightVegeta() {
     await sleep(500);
