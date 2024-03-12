@@ -61,10 +61,9 @@ export class Fights extends BasePage {
 
   async fightVegeta() {
     await sleep(500);
-    // if (await this.isVisibleElement(this.elements.clock)) {
-    //   log.info('Clock displayed breaking...');
-    // } else 
-    if (await this.page.locator(this.pozycja7).isVisible()) {
+    if (await this.isVisibleElement(this.elements.clock)) {
+      log.info('Clock displayed breaking...');
+    } else if (await this.page.locator(this.pozycja7).isVisible()) {
       log.info(`Klikam w element w kolumnie center na pozycji:  7`);
       await this.page.locator(this.pozycja7).click();
     } else if (await this.page.locator(this.pozycja8).isVisible()) {
