@@ -65,16 +65,16 @@ export class Fights extends BasePage {
       log.info('Clock displayed breaking...');
     } else if (await this.page.locator(this.pozycja7).isVisible()) {
       log.info(`Klikam w element w kolumnie center na pozycji:  7`);
-      // await this.page.locator(this.pozycja7).click();
+      await this.page.locator(this.pozycja7).click();
     } else if (await this.page.locator(this.pozycja8).isVisible()) {
       log.info(`Klikam w element w kolumnie center na pozycji:  8`);
-      // await this.page.locator(this.pozycja8).click();
+      await this.page.locator(this.pozycja8).click();
     } else if (await this.page.locator(this.pozycja9).isVisible()) {
       log.info(`Klikam w element w kolumnie center na pozycji:  9`);
-      // await this.page.locator(this.pozycja9).click();
+       await this.page.locator(this.pozycja9).click();
     } else if (await this.page.locator(this.pozycja10).isVisible()) {
       log.info(`Klikam w element w kolumnie center na pozycji:  10`);
-      // await this.page.locator(this.pozycja10).click();
+       await this.page.locator(this.pozycja10).click();
     }
   }
 }
