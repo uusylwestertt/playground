@@ -23,15 +23,6 @@ test.describe('Fights', async () => {
   });
 
   test('Case 1: Start fights borsuk', async () => {
-
-
-
-    const loginLyysyy = config.loginLyysyy;
-    log.info('Fights for lysy');
-    await loginPage.login(loginLyysyy);
-    await dashboardPage.clickFights();
-    await fightsPage.executeFights(5, 13);
-    await dashboardPage.logout();
     const loginBorsuk = config.loginBorsuk;
     //fights borusk
     log.info('Fights for stevenBorsuk');
@@ -40,28 +31,25 @@ test.describe('Fights', async () => {
     await fightsPage.executeFights(3, 12);
     await dashboardPage.logout();
     await sleep(500);
-
-    //fights lyson
-  
   });
 
-  // test('Case 1: Start fights lyson', async () => {
-  //   const loginLyysyy = config.loginLyysyy;
-  //   //fights lyysyy
-  //   log.info('Fights for lysy');
-  //   await loginPage.login(loginLyysyy);
-  //   await dashboardPage.clickFights();
-  //   await fightsPage.executeFights(5, 13);
-  //   await dashboardPage.logout();
-  // });
+  test('Case 1: Start fights lyson', async () => {
+    const loginLyysyy = config.loginLyysyy;
+    //fights lyysyy
+    log.info('Fights for lysy');
+    await loginPage.login(loginLyysyy);
+    await dashboardPage.clickFights();
+    await fightsPage.executeFights(5, 13);
+    await dashboardPage.logout();
+  });
 
-  // test('Case 1: Start fights princessa', async () => {
-  //   const loginVegeta = config.loginVegeta;
-  //   // fights vegeta
-  //   log.info('Fights for PrinsVezeta');
-  //   await loginPage.login(loginVegeta);
-  //   await dashboardPage.clickFights();
-  //   await fightsPage.fightVegeta();
-  //   await dashboardPage.logout();
-  // });
+  test('Case 1: Start fights princessa', async () => {
+    const loginVegeta = config.loginVegeta;
+    // fights vegeta
+    log.info('Fights for PrinsVezeta');
+    await loginPage.login(loginVegeta);
+    await dashboardPage.clickFights();
+    await fightsPage.fightVegeta();
+    await dashboardPage.logout();
+  });
 });
