@@ -8,7 +8,7 @@ export class Dashboard extends BasePage {
     this.elements = {
       teamLink: `(//a[contains(text(),'Team')])[1]`,
       closeNewsButton: `#news a[href="#"]`,
-      fightsLink: `//a[contains(text(),'Play Off')]`,
+      fightsLink: `html/body/table/tbody/tr[2]/td/div/a[4]`,
       closeFightsWindow: `#ustawki img[src="img/3.jpg"]`,
       logoutButton: `a[href="?menu=logout"]`,
     };
@@ -23,7 +23,6 @@ export class Dashboard extends BasePage {
 
   async clickFights() {
     if (await this.isVisibleElement(this.elements.closeNewsButton)) {
-      log.info('News popup displayed closing it');
       await this.click(this.elements.closeNewsButton);
     }
     await this.gameClick(this.elements.fightsLink);
