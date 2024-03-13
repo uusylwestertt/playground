@@ -1,3 +1,4 @@
+import { log } from '../helpers/logger';
 import BasePage from './basePage';
 import { Page } from '@playwright/test';
 
@@ -22,6 +23,7 @@ export class Dashboard extends BasePage {
 
   async clickFights() {
     if (await this.isVisibleElement(this.elements.closeNewsButton)) {
+      log.info('News popup displayed closing it');
       await this.click(this.elements.closeNewsButton);
     }
     await this.gameClick(this.elements.fightsLink);
