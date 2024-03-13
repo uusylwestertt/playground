@@ -37,7 +37,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], headless: false, locale: 'pl-PL' },
+      use: { ...devices['Desktop Chrome'], headless: true, locale: 'pl-PL' },
     },
 
     // {
