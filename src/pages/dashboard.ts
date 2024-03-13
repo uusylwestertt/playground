@@ -7,7 +7,7 @@ export class Dashboard extends BasePage {
     this.elements = {
       teamLink: `(//a[contains(text(),'Team')])[1]`,
       closeNewsButton: `#news a[href="#"]`,
-      fightsLink: `(//a[contains(text(),'Fights')])[1]`,
+      fightsLink: `//a[contains(text(),'Play Off')]`,
       closeFightsWindow: `#ustawki img[src="img/3.jpg"]`,
       logoutButton: `a[href="?menu=logout"]`,
     };
