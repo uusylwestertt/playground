@@ -32,24 +32,4 @@ test.describe('Fights', async () => {
     await dashboardPage.logout();
     await sleep(500);
   });
-
-  test('Case 1: Start fights lyson', async () => {
-    const loginLyysyy = config.loginLyysyy;
-    //fights lyysyy
-    log.info('Fights for lysy');
-    await loginPage.login(loginLyysyy);
-    await dashboardPage.clickFights();
-    await fightsPage.executeFights(5, 13);
-    await dashboardPage.logout();
-  });
-
-  test('Case 1: Start fights princessa', async () => {
-    const loginVegeta = config.loginVegeta;
-    // fights vegeta
-    log.info('Fights for PrinsVezeta');
-    // await loginPage.login(loginVegeta);
-    // await dashboardPage.clickFights();
-    // await fightsPage.fightVegeta();
-    // await dashboardPage.logout();
-  });
 });
