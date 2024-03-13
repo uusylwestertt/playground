@@ -30,6 +30,7 @@ test.describe('Fights', async () => {
     await dashboardPage.clickFights();
     await fightsPage.executeFights(3, 12);
     await dashboardPage.logout();
+    await sleep(500);
 
     //fights lyson
     const loginLyysyy = config.loginLyysyy;
