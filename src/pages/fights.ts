@@ -60,7 +60,7 @@ export class Fights extends BasePage {
   pozycja10 = `//*[@id="ustawki-inner"]/table/tbody/tr/td[2]/table/tbody/tr[11]/td[4]/a[2]`;
 
   async fightVegeta() {
-    await sleep(500);\
+    await sleep(500);
     if (await this.isVisibleElement(this.elements.clock)) {
       log.info('Clock displayed breaking...');
     } else if (await this.page.locator(this.pozycja7).isVisible()) {
