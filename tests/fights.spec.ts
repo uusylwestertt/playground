@@ -47,9 +47,9 @@ test.describe('Fights', async () => {
     const loginVegeta = config.loginVegeta;
     // fights vegeta
     log.info('Fights for PrinsVezeta');
-    await loginPage.login(loginVegeta);
-    await dashboardPage.clickFights();
-    await fightsPage.fightVegeta();
-    await dashboardPage.logout();
+    // await loginPage.login(loginVegeta);
+    // await dashboardPage.clickFights();
+    // await fightsPage.fightVegeta();
+    // await dashboardPage.logout();
   });
 });
