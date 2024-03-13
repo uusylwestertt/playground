@@ -16,14 +16,12 @@ export class LoginPage extends BasePage {
   }
 
   async login(login: string) {
-    log.info('login to app');
     const password = login == Users.borsuk ? config.passwordBorsuk : config.passwordLyysyyVegeta;
     await this.click(this.elements.loginLink);
     await this.typeIn(this.elements.userInput, login);
     await this.typeIn(this.elements.passwordInput, password);
     await this.click(this.elements.loginButton);
     await this.sleep(2000);
-    log.info('login to success');
   }
 
   async sleep(ms: number) {

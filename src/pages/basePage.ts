@@ -29,10 +29,8 @@ export default class BasePage {
 
   async gameClick(selectorKey: string | Locator) {
     try {
-      log.info(`Click on element: ${selectorKey}`);
       await this.click(selectorKey);
     } catch {
-      log.info(`Click on element with close window: ${selectorKey}`);
       await this.checkAllWindows();
       await this.click(selectorKey);
       await this.checkAllWindows();
